@@ -1,45 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/src/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <meta name="color-scheme" content="light dark" />
+    <title>写真コピー2</title>
     <script type="module" src="/src/main.ts" defer></script>
   </head>
 
   <body>
-    <div class="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div class="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/src/assets/vite.svg" class="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img
-            src="/src/assets/tauri.svg"
-            class="logo tauri"
-            alt="Tauri logo"
-          />
-        </a>
-        <a href="https://www.typescriptlang.org/docs" target="_blank">
-          <img
-            src="/src/assets/typescript.svg"
-            class="logo typescript"
-            alt="typescript logo"
-          />
-        </a>
-      </div>
-
-      <p>Click on the Tauri logo to learn more about the framework</p>
-
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-
-      <p id="greet-msg"></p>
-    </div>
+    <main>
+      <section>
+        <h2>フォルダー設定</h2>
+        <article id="folders">
+          <section id="source_folder_wrapper">
+            <h3>コピー元 (複数可)</h3>
+            <article id="source_folder">
+              <textarea
+                id="source_folder_path_list"
+                placeholder="1行1フォルダー。取り消すときは行を削除してください。"
+              ></textarea>
+              <button
+                type="button"
+                id="add_folder_button"
+                class="section_top_button"
+              >
+                追加
+              </button>
+            </article>
+          </section>
+          <section id="desitination_folder_wrapper">
+            <h3>コピー先</h3>
+            <article id="desitination_folder">
+              <input type="text" id="destination_folder_path" />
+              <button
+                type="button"
+                id="select_folder_button"
+                class="section_top_button"
+              >
+                選択
+              </button>
+            </article>
+          </section>
+        </article>
+      </section>
+      <section>
+        <h2>ファイル設定・選択</h2>
+        <article id="select_copy">
+          <section>
+            <h3>検索リスト (部分一致)</h3>
+            <article id="filename_entry">
+              <textarea
+                id="filename_entry_list"
+                placeholder="1行1ファイル。部分一致で検索します。"
+              ></textarea>
+              <button type="button" id="copy_start_button">コピー開始</button>
+            </article>
+          </section>
+          <section id="copy_ambiguous_wrapper">
+            <h3>候補ファイル選択</h3>
+            <article id="copy_ambiguous">
+              <select id="ambiguous_path_list" size="5"></select>
+              <div id="preview_img_wrapper"></div>
+            </article>
+          </section>
+        </article>
+      </section>
+    </main>
   </body>
 </html>

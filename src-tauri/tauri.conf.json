@@ -1,6 +1,5 @@
 {
   "productName": "photo-copy",
-  "version": "0.1.0",
   "identifier": "dev.pages.nagais.photo-copy",
   "build": {
     "beforeDevCommand": "pnpm dev",
@@ -12,24 +11,39 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "photo-copy",
-        "width": 800,
-        "height": 600
+        "title": "写真コピー2",
+        "width": 1000,
+        "height": 800
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' http://asset.localhost asset:",
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "**"
+        ]
+      }
     }
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": "msi",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDI0QTk4N0UxQ0UwOUY5N0IKUldSNytRbk80WWVwSkEvTTl5SU1veFlIYWdvMkRCQldvUnljNFZCcmFwY2FLNUpLSGtZWXZpNFoK",
+      "windows": {
+        "installMode": "passive"
+      }
+    }
   }
 }
